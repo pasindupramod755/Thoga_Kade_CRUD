@@ -147,7 +147,7 @@ public class SearchItem extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-dispose();
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -155,7 +155,7 @@ dispose();
             Item a = Contraller.searchItemMethod(jTextField1.getText());
             jTextField2.setText(a.getName());
             jTextField3.setText(a.getPrice() + "");
-            jTextField4.setText(a.getQty()+ "");
+            jTextField4.setText(a.getQty() + "");
 
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -163,7 +163,7 @@ dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-       jButton2ActionPerformed(evt);
+        jButton2ActionPerformed(evt);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     public static void main(String args[]) {
