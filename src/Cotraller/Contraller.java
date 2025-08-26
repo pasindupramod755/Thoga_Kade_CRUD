@@ -2,6 +2,7 @@ package Cotraller;
 
 import Model.Item;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Contraller {
 
@@ -50,5 +51,18 @@ public class Contraller {
         Statement stm = connection.createStatement();
         int count = stm.executeUpdate(SQL);
         return count > 0;
+    }
+
+    public static ArrayList<Item> viewItemMethod() throws ClassNotFoundException, SQLException {
+        String SQL = "select * from item ";
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/ThogaKade", "root", "1234");
+        Statement stm = connection.createStatement();
+        ResultSet rst = stm.executeQuery(SQL);
+        ArrayList<Item> arrayList = new ArrayList<>();
+        while (rst.next()) {
+            arrayList.add(new Item(rst.getString(1), rst.getString(2), rst.getDouble(3), rst.getInt(4)));
+        }
+        return arrayList;
     }
 }
