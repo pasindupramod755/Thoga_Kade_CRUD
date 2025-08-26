@@ -43,8 +43,8 @@ public class Contraller {
         return count > 0;
     }
 
-    public static boolean deleteItemMethod(String id) throws ClassNotFoundException, SQLException {
-        String SQL = "delete from item where code = '" + id + "' ";
+    public static boolean deleteItemMethod(String code) throws ClassNotFoundException, SQLException {
+        String SQL = "delete from item where code = '" + code + "' ";
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/ThogaKade", "root", "1234");
         Statement stm = connection.createStatement();
