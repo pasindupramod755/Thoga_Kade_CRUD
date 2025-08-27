@@ -1,5 +1,6 @@
 package Cotraller;
 
+import DataBaseConnection.DataBaseConnection;
 import Model.Item;
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,8 +9,7 @@ public class Contraller {
 
     public static boolean addItemMethod(Item item) throws ClassNotFoundException, SQLException {
         String SQL = "Insert into Item Values(?,?,?,?)";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/ThogaKade", "root", "1234");
+        Connection connection = (Connection) DataBaseConnection.getInstance().getConnection();
         PreparedStatement stm = connection.prepareStatement(SQL);
         stm.setObject(1, item.getId());
         stm.setObject(2, item.getName());
@@ -21,8 +21,7 @@ public class Contraller {
 
     public static Item searchItemMethod(String id) throws ClassNotFoundException, SQLException {
         String SQL = "Select * From item where code='" + id + "'";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/ThogaKade", "root", "1234");
+        Connection connection = DataBaseConnection.getInstance().getConnection();
         Statement stm = connection.createStatement();
         ResultSet rst = stm.executeQuery(SQL);
         if (rst.next()) {
